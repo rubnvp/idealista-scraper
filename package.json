@@ -1,0 +1,31 @@
+{
+  "name": "idealista-scraper",
+  "version": "1.0.0",
+  "description": "Scraper for idealista.com places, just for demo purposes",
+  "main": "main.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubnvp/idealista-scraper.git"
+  },
+  "keywords": [
+    "web",
+    "scraping",
+    "nodejs",
+    "cheerio",
+    "axios"
+  ],
+  "author": "Rubén Valseca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubnvp/idealista-scraper/issues"
+  },
+  "homepage": "https://github.com/rubnvp/idealista-scraper#readme"
+}
