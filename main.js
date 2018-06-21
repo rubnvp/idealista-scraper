@@ -3,7 +3,7 @@ const cheerio = require ('cheerio');
 const fs = require('fs');
 
 const baseUrl = 'https://www.idealista.com';
-const initialUrl = '/alquiler-viviendas/madrid/centro/con-precio-hasta_650/';
+const initialUrl = '/alquiler-viviendas/madrid/centro/sol/';
 
 function scrapeUrl(url, items=[]) {
     console.log('requesting', url);
@@ -18,15 +18,15 @@ function scrapeUrl(url, items=[]) {
                         title: $item.find('.item-link').text(),
                         link: baseUrl + $item.find('.item-link').attr('href'),
                         image: $item.find('.gallery-fallback img').attr('data-ondemand-img'),
-                        price: parseInt($item.find('.item-price').text()),
-                        rooms: parseInt($item.find(".item-detail small:contains('hab.')").parent().text()),
-                        squareMeters: parseInt($item.find(".item-detail small:contains('m²')").parent().text()),
+                        price: $item.find('.item-price').text(),
+                        rooms: $item.find(".item-detail small:contains('hab.')").parent().text(),
+                        squareMeters: $item.find(".item-detail small:contains('m²')").parent().text(),
                     };
                 });
             const allItems = items.concat(pageItems);
             console.log(pageItems.length,'items retrieved', allItems.length, 'acumulated');
-            const nextLink = $('.pagination .next a').attr('href');
-            return nextLink ? scrapeUrl(baseUrl + nextLink, allItems) : allItems;
+            const nextUrl = $('.pagination .next a').attr('href');
+            return nextUrl ? scrapeUrl(baseUrl + nextUrl, allItems) : allItems;
         })
         .catch(error => {
             console.log('error', error);
